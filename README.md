@@ -21,7 +21,7 @@
 
 ## 1. Objectives
 
-You will extrapolate what you learned in the two labs to **two real airfoils** and confront your models with **wind-tunnel data**. The project has three parts:
+You will extrapolate what you learned in the two labs to **two real airfoils** and confront your models with **wind-tunnel data**. The project has three parts. Depenging on the group progress, the third part will be made mandatory or optional.
 
 1. **Models vs. experiment:** compute the lift curve $C_L(\alpha)$ of two airfoils with (a) the panel method and (b) a fitted Joukowsky transform, and compare both with the experimental reference.
 2. **Critical analysis:** explain every discrepancy between the three data sets (Joukowsky, panels, experiment).
@@ -33,7 +33,7 @@ You will extrapolate what you learned in the two labs to **two real airfoils** a
 
 Experimental data: [UIUC Low-Speed Airfoil Tests (LSAT) database](https://m-selig.ae.illinois.edu/uiuc_lsat.html>). For each airfoil you will need (i) the **coordinates** (`.dat` file) and (ii) the **lift (and drag) polars** at one Reynolds number.
 
-Our models are **inviscid, incompressible, 2D, attached flow**. Choose data that are as close as possible to these hypotheses.
+Our models are **inviscid, incompressible, 2D flow**. Choose data that are as close as possible to these hypotheses.
 
 ### Selection criteria
 
@@ -50,14 +50,12 @@ Our models are **inviscid, incompressible, 2D, attached flow**. Choose data that
 ### Recommended strategy
 
 * **Airfoil A (easy case, "model-friendly"):** a symmetric or slightly cambered thin profile (e.g. a NACA 4-digit such as 0009/0012/2412, *if available in the database at a sufficiently high Re*). Expected: good agreement in the linear range.
-* **Airfoil B (more demanding case):** a more cambered or thicker profile, different enough from A to be informative (e.g. a NACA 4412-type section or a typical low-speed section). Expected: larger discrepancies, richer discussion.
-* **Justify** your two choices in a short table (thickness, camber, Re, trailing-edge type, quality of data). A justified choice is part of the grade.
+* **Airfoil B (more demanding case):** a more cambered or thicker profile, different enough from A to be informative Expected: larger discrepancies, richer discussion.
+* **Justify** your two choices in a short table (thickness, camber, Re, trailing-edge type, quality of data). A justified choice is a plus.
 * Use the **same Reynolds number** for all comparisons of a given airfoil, and state it.
 
 
-### Candidate airfoils
-
-The airfoils below appear in the list of airfoils tested by the UIUC LSAT program (Vols 1–5 and/or "Airfoils at Low Speeds", SoarTech 8). Volumes 1 and 2 provide lift **and drag** data; Volumes 3–5 and the thesis add pitching moment. The SoarTech 8 data are also provided as tabulated files. **All the data are low-Reynolds-number data (the database covers roughly Re = 30,000 to 500,000)**, so viscous effects should be completely absent.
+### Candidate airfoils (Examples)
 
 | Airfoil | Type | Why it is interesting for this project | Expected difficulty |
 |---|---|---|---|
@@ -126,7 +124,7 @@ The circle must pass through the point $\zeta = a$ (trailing edge). The free par
 
 ## 4. Part 2 – Panel method
 
-1. Import the coordinates (Selig format: from the trailing edge, over the upper surface to the leading edge, then back along the lower surface). Check the ordering and orientation of the panels.
+1. Import the coordinates. Check the ordering and orientation of the panels.
 2. Compute $C_L(\alpha)$ for $\alpha \in [-6°, +10°]$ (for a dozen of values)
 3. **Convergence study:** try to vary the number of panels $N$ (e.g. 40, 80, 160, 320, 640). Plot $C_L$ (at a fixed $\alpha$, versus $N$. Also test the panel distribution (uniform vs. cosine spacing) and discuss. Report the $N$ you retain and why.
 4. Compute the lift curve of the fitted profile.
@@ -139,7 +137,7 @@ Plot, for each airfoil, on **one figure**: Joukowsky, panel method, experiment. 
 
 ---
 
-## 6. Part 4 – Optimal climb trajectory (Optional)
+## 6. Part 4 – Optimal climb trajectory (Maybe optional)
 
 ### 6.1 Goal
 
@@ -197,7 +195,7 @@ The values below describe a small electric UAV / large RC aircraft. They are cho
 | 6 | ≈ 10 | ≈ 11 | ≈ 3.3 |
 | 12 (stall) | ≈ 8.4 | ≈ 9.5 | ≈ 2.5 |
 
-The maximum $\alpha$ is clearly **not** the best: it gives the lowest climb rate (and no margin to stall), whereas a small $\alpha$ makes the aircraft faster. With these values the optimal quasi-steady $\alpha$ is expected at a few degrees, so the flight time to 100 m is of the order of 25–30 s including the initial acceleration. The best-$L/D$ angle ($C_L \approx 0.67$, $\alpha \approx 5$°) gives the steepest climb **angle** $\gamma$ (minimum drag) but not the best climb **rate** $\dot h = V\sin\gamma$, which depends on the excess **power** and favours a higher speed (smaller $\alpha$). Students must explain this difference and say which criterion their minimum-time problem selects. Note that at the highest speeds the Reynolds number approaches the upper end of the data range; check it. These numbers are indicative only: the exact optimum must come from the simulation.
+The maximum $\alpha$ is clearly **not** the best: it gives the lowest climb rate (and no margin to stall), whereas a small $\alpha$ makes the aircraft faster. With these values the optimal quasi-steady $\alpha$ is expected at a few degrees, so the flight time to 100 m is of the order of 25–30 s including the initial acceleration. The best-$L/D$ angle ($C_L \approx 0.67$, $\alpha \approx 5$°) gives the steepest climb **angle** $\gamma$ (minimum drag) but not the best climb **rate** $\dot h = V\sin\gamma$, which depends on the excess **power** and favours a higher speed (smaller $\alpha$).
 
 ### 6.4 Command parametrisation
 
@@ -207,7 +205,7 @@ Add the constraints you consider necessary: $V \ge 1.2\,V_{stall}$, maximum load
 
 ### 6.5 Optimisation
 
-1. Integrate the equations (RK4 or `scipy.integrate.solve_ivp`).
+1. Integrate the equation (use `scipy.integrate.solve_ivp`).
 2. Minimise the time to reach $h_T$ over the command parameters (`scipy.optimize`, or a simple parametric sweep first to visualise the landscape).
 3. Plot $h(t)$, $V(t)$, $\gamma(t)$, $\alpha(t)$, $C_L$, $L/D$.
 
