@@ -1,16 +1,17 @@
 # CHEAT SHEET
 
 - **Author:** Pascal Bouda - CEA Research Engineer ([pascal.bouda@cea.fr](mailto:pascal.bouda@cea.fr))
-- **Goal:** create a tiny Python project and push it to a new GitHub private repository.
-
+- **Goal:**
+  - create a tiny Python project and push it to a new GitHub private repository.
+  - create a personal python environment
 ## 0. Prerequisites
 
-| | Windows | macOS | Linux (Debian/Ubuntu) |
-|---|---|---|---|
-| **Terminal to use** | **Git Bash** (installed with Git) | Terminal | Terminal |
-| **Install Git** | https://git-scm.com (keep default options) | `git --version` (accepts the install prompt) | `sudo apt install git` |
-| **Install Python** | https://python.org (tick **"Add Python to PATH"**) | https://python.org or `brew install python` | `sudo apt install python3` |
-| **Run Python with** | `python` (or `py`) | `python3` | `python3` |
+|                     | Windows                                            | macOS                                        | Linux (Debian/Ubuntu)      |
+| ------------------- | -------------------------------------------------- | -------------------------------------------- | -------------------------- |
+| **Terminal to use** | **Git Bash** (installed with Git)                  | Terminal                                     | Terminal                   |
+| **Install Git**     | https://git-scm.com (keep default options)         | `git --version` (accepts the install prompt) | `sudo apt install git`     |
+| **Install Python**  | https://python.org (tick **"Add Python to PATH"**) | https://python.org or `brew install python`  | `sudo apt install python3` |
+| **Run Python with** | `python` (or `py`)                                 | `python3`                                    | `python3`                  |
 
 > 👉 **Windows users: run every command below in Git Bash** (Start menu → "Git Bash"), not in cmd or PowerShell. Then all commands are identical on the 3 systems.
 > In this sheet, write `python3` instead of `python` on macOS/Linux.
@@ -92,13 +93,102 @@ git commit -m "Describe change" # save a snapshot
 git push                        # send to GitHub
 ```
 
-## Quick vocabulary
+## 6. Git Quick vocabulary
 
-| Word | Meaning |
-|------|---------|
-| **repository (repo)** | A project folder tracked by Git |
-| **commit** | A saved snapshot with a message |
-| **staging (`add`)** | Choosing which changes go in the next commit |
-| **remote / origin** | The copy of the repo on GitHub |
-| **push** | Send local commits to GitHub |
-| **SSH key** | Key pair: private (stays on your PC) + public (given to GitHub) |
+| Word                  | Meaning                                                         |
+| --------------------- | --------------------------------------------------------------- |
+| **repository (repo)** | A project folder tracked by Git                                 |
+| **commit**            | A saved snapshot with a message                                 |
+| **staging (`add`)**   | Choosing which changes go in the next commit                    |
+| **remote / origin**   | The copy of the repo on GitHub                                  |
+| **push**              | Send local commits to GitHub                                    |
+| **SSH key**           | Key pair: private (stays on your PC) + public (given to GitHub) |
+
+
+## 7. Installing your project environment
+
+### 1. Open a terminal
+
+- **Windows:** PowerShell or the VS Code terminal.
+- **Linux / macOS:** Terminal or the VS Code terminal.
+
+Go to the folder containing `requirements.txt`:
+
+```bash
+cd path/to/your/project
+```
+
+### 2. Create and activate a virtual environment
+
+Create the environment (named `.venv`):
+
+```bash
+python -m venv .venv
+```
+
+Activate it:
+
+#### Windows (PowerShell)
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+#### Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
+If `python` is not found, try `python3` on Linux/macOS or `py` on Windows when creating the environment.
+
+### 3. Install the provided requirements
+
+With the environment activated:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+This installs the packages listed in `requirements.txt` into your virtual environment.
+
+### 4. Edit marimo notebooks
+
+`marimo` is a new-generation Python notebook environment, similar to Jupyter, that lets you write and execute code interactively. Unlike traditional Jupyter notebooks, marimo notebooks are stored as regular Python (.py) files, making them easier to version-control with Git and reuse as scripts. Marimo also automatically tracks dependencies between cells and re-runs cells when their inputs change, helping keep results consistent. You can edit notebooks in VS Code or through a web browser using marimo edit, without needing a separate Jupyter server.
+
+For your daily use of marimo notebooks, choose one of the following workflows:
+
+#### Option A — Web browser with `marimo edit`
+
+With `.venv` activated, run:
+
+```bash
+marimo edit notebook.py
+```
+
+Replace `notebook.py` with your notebook filename. Open the local URL printed in the terminal in your browser.
+
+N.B.: marimo have already been installed with the `requirements.txt` file
+
+#### Option B — VS Code
+
+1. Open your project folder in VS Code.
+2. Select the Python interpreter from `.venv`.
+   - Open the Command Palette (`Ctrl+Shift+P` on Windows/Linux, `Cmd+Shift+P` on macOS).
+   - Choose **Python: Select Interpreter**, then select `.venv`.
+3. Open your marimo notebook (`.py` file).
+4. Use the marimo VS Code extension if installed, or run the notebook using the terminal commands below.
+
+
+### 5. When you return to the project
+
+Activate the environment again before working:
+
+- **Windows:** `.\.venv\Scripts\Activate.ps1`
+- **Linux/macOS:** `source .venv/bin/activate`
+
+To leave the environment:
+
+```bash
+deactivate
+```
