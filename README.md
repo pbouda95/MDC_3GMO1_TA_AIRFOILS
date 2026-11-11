@@ -9,7 +9,7 @@
 
 ## 0. Marking criteria
 
- - **Final code structure**: A particular attention should be provided on the code structure. All efforts to come up with a Object-Oriented Programming (OOP) code will be rewarded (classes, methods, attributes, inheritance). This is similar for all efforts to use the mode advanced functions of the NumPy library.
+ - **Final code structure**: A particular attention should be provided on the code structure. All efforts to come up with a [Object-Oriented Programming (OOP) code](https://www.w3schools.com/python/python_oop.asp) will be rewarded (classes, methods, attributes, inheritance). This is similar for all efforts to use the mode advanced functions of the NumPy library.
  By contrast, you should avoid unuseful code lines (duplicated code, loops instead of NumPy broadcasting ...)
 
  - **Physical interpretations**: The project is about fight mechanics and fluid mechanics. However, this is not the most critical part. No *a priori* knowledge was expected, so any effort to try to better understand
@@ -21,7 +21,7 @@
 
 ## 1. Objectives
 
-You will extrapolate what you learned in the two labs to **two real airfoils** and confront your models with **wind-tunnel data**. The project has three parts. Depenging on the group progress, the third part will be made mandatory or optional.
+You will extrapolate what you learned in the two labs to **two real airfoils** and confront your models with **wind-tunnel data**. The project has three parts. Depending on the group progress, the third part will be made mandatory or optional.
 
 1. **Models vs. experiment:** compute the lift curve $C_L(\alpha)$ of two airfoils with (a) the panel method and (b) a fitted Joukowsky transform, and compare both with the experimental reference.
 2. **Critical analysis:** explain every discrepancy between the three data sets (Joukowsky, panels, experiment).
