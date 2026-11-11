@@ -103,7 +103,7 @@ $$
 
 ---
 
-## 3. Part 1 – Joukowsky transform with profile fitting
+## 3. Part 1a – Joukowsky transform with profile fitting
 
 A Joukowsky airfoil is obtained from a circle in the $\zeta$-plane through
 
@@ -122,7 +122,7 @@ The circle must pass through the point $\zeta = a$ (trailing edge). The free par
 4. Report the fit error, overlay the fitted and real profiles, and comment on where they differ (leading edge, trailing edge angle, lower surface…).
 5. Compute the lift curve of the fitted profile.
 
-## 4. Part 2 – Panel method
+## 4. Part 1b – Panel method
 
 1. Import the coordinates. Check the ordering and orientation of the panels.
 2. Compute $C_L(\alpha)$ for $\alpha \in [-6°, +10°]$ (for a dozen of values)
@@ -131,13 +131,13 @@ The circle must pass through the point $\zeta = a$ (trailing edge). The free par
 
 ---
 
-## 5. Part 3 – Comparison and discussion
+## 5. Part 2 – Comparison and discussion
 
 Plot, for each airfoil, on **one figure**: Joukowsky, panel method, experiment. Trying to explain the result might be a plus.
 
 ---
 
-## 6. Part 4 – Optimal climb trajectory (Maybe optional)
+## 6. Part 3 – Optimal climb trajectory (Maybe optional)
 
 ### 6.1 Goal
 
